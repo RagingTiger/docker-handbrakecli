@@ -44,13 +44,14 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev && \
     rm -rf /var/lib/apt/lists/*
 
-# separate run for building from source
+# separate run for building from source version
+ARG HBVERS=1.3.1
 RUN git clone https://github.com/HandBrake/HandBrake.git && \
     cd HandBrake && \
+    git checkout "${HBVERS}" && \
     ./configure --disable-gtk --launch-jobs=$(nproc) --launch && \
     mv build/HandBrakeCLI /usr/local/bin && \
     rm -rf /tmp/*
 
 # setting command
 CMD ["HandBrakeCLI","--help"]
-
