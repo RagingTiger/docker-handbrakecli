@@ -1,6 +1,9 @@
 ## About
 Repo for `Dockerized` HandbrakeCLI
 
+## Arch
+Currently only built for `amd64`
+(see source: https://github.com/HandBrake/HandBrake)
 
 ## Usage
 Image is built without `ENTRYPOINT` and only `CMD ["HandBrakeCLI","--help"]`, so
